@@ -19,6 +19,9 @@ set softtabstop=2
 " Enable smart-indent
 set smartindent
 colorscheme OceanicNext
+set termguicolors
+set dir=$HOME/.vim/tmp/swap
+if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
 syntax match eq "==" conceal cchar=≣

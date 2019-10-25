@@ -1,4 +1,6 @@
 execute pathogen#infect()
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
+set matchpairs+=<:>
 " Allow for file search from within working directory
 set path+=**
 map <Space> :noh<cr>
@@ -17,6 +19,7 @@ set softtabstop=2
 " Enable smart-indent
 set smartindent
 colorscheme OceanicNext
+set termguicolors
 syntax match div "//" conceal cchar=÷
 syntax match mul "*" conceal cchar=×
 syntax match eq "==" conceal cchar=≣
