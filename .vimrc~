@@ -1,6 +1,4 @@
 execute pathogen#infect()
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
-set matchpairs+=<:>
 " Allow for file search from within working directory
 set path+=**
 map <Space> :noh<cr>
