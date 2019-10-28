@@ -3,7 +3,7 @@ map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
 set matchpairs+=<:>
 " Allow for file search from within working directory
 set path+=**
-map <Space> :noh<cr>
+nnoremap <Space> :noh<cr>
 " Line Number
 set number
 " Tab Width
@@ -19,15 +19,13 @@ set softtabstop=2
 " Enable smart-indent
 set smartindent
 colorscheme OceanicNext
+set nocompatible
 set termguicolors
 set dir=$HOME/.vim/tmp/swap
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
-syntax match div "//" conceal cchar=÷
-syntax match mul "*" conceal cchar=×
-syntax match eq "==" conceal cchar=≣
-syntax match neq "!=" conceal cchar=≠
-syntax match gteq ">=" conceal cchar=≥
-syntax match lteq "<=" conceal cchar=≤
+syntax enable
+set wildmenu
+set ttyfast
 " Turn off background bleeding when jumping to top/bottom
 if &term =~ '256color'
   set t_ut=

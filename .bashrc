@@ -117,4 +117,4 @@ if ! shopt -oq posix; then
 fi
 alias nils='cd /mnt/c/users/Nils/'
 alias bsit='cd /mnt/c/users/Nils/Documents/BSIT\ 18a'
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
