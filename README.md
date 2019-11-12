@@ -13,3 +13,7 @@ My entire spacemacs config with layers for HTML, JavaScript, git, Markdown, org-
 Also:
   * Fira Code
   * some custom set variables
+
+## .tmux.conf
+
+Set default terminal in tmux to xterm
