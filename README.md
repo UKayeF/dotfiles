@@ -17,3 +17,10 @@ Also:
 ## .tmux.conf
 
 Set default terminal in tmux to xterm
+
+## .vimrc
+
+* indentation
+* color theme
+* turn off background bleeding
+* remap some keys for nice shortcuts such as :noh
