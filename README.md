@@ -13,6 +13,7 @@ My entire spacemacs config with layers for HTML, JavaScript, git, Markdown, org-
 Also:
   * Fira Code
   * some custom set variables
+  * new colorschemes (including some commented themes)
 
 ## .tmux.conf
 
