@@ -1,95 +1,114 @@
-execute pathogen#infect()
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
-set matchpairs+=<:>
-" Allow for file search from within working directory
-set path+=**
-nnoremap <Space> :noh<cr>
-" Line Number
-set number
-" Tab Width
-set tabstop=2
-" Tabs -> Spaces
-set expandtab
-" Auto-indent new lines
-set autoindent
-" Auto indent with 2 spaces
-set shiftwidth=2
-" One tab -> 2 spaces
-set softtabstop=2
-" Enable smart-indent
-set smartindent
-colorscheme OceanicNext
-set nocompatible
-set termguicolors
-set dir=$HOME/.vim/tmp/swap
-if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
-syntax enable
-set wildmenu
-set ttyfast
-" Turn off background bleeding when jumping to top/bottom
-if &term =~ '256color'
-  set t_ut=
-endif
+"===================Vundle================"
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
 
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
 
-" Sane Defaults
-"
-" An example for a vimrc file.
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
+    Plugin 'Valloric/YouCompleteMe'
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
+    Plugin 'Yggdroot/indentLine'
+    
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
-  endif
-endif
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    "
+    " see :h vundle for more details or wiki for FAQ
 
-if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
+    let g:ycm_global_ycm_extra_conf = '/home/samer/.vim/YCM/ycm_extra_conf.py'
+"====================Pathogen=============="
+    execute pathogen#infect()
+"============Swap File Directory==========="
+  set dir=$HOME/.vim/tmp/swap
+  if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
+"================File Search==============="
+  set path+=**
+"================Spaces and Tabs==========="
+  set tabstop=2
+  set softtabstop=2
+  set expandtab
+  set shiftwidth=2
+"===========Indentation Features==========="
+" see backspace=indent,eol,start
+"  set autoindent
+"  set smartindent
+"==================   Theme    ============"
+  set t_Co=256
+  colorscheme gruvbox
+  set background=dark
+  syntax on
+"==================UI Config==============="
+  set number
+  set showcmd
+  set cursorline
+  filetype indent on
+  set showmatch
+  set laststatus=2
+"==================Searching================"
+  set incsearch
   set hlsearch
-endif
+  :hi Search ctermbg=3 ctermfg=8
+  set wildmenu
+  set wildmode=list:longest,full
+"==================Movement================="
+  set ttyfast
+  nnoremap B ^
+  nnoremap E $
+  set backspace=indent,eol,start
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-H> <C-W><C-H>
+"================Syntastic================="
+"   set statusline+=%#warningmsg#
+"   set statusline+=%{SyntasticStatuslineFlag()}
+"   set statusline+=%*
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
+ let g:syntastic_always_populate_loc_list = 1
+ let g:syntastic_auto_loc_list = 1
+ let g:syntastic_check_on_open = 1
+ let g:syntastic_check_on_wq = 0
+"===================Syntastic=============="
+  let g:syntastic_java_checker = ['javac']
+"==============Leader Shortcuts============="
+  let mapleader=" "
+  inoremap jk <esc>
+  nnoremap <leader>vv :vsp<CR>
+  nnoremap <leader>hh :sp<CR>
+  nnoremap <leader>cc :close<CR>
+  nnoremap <leader>nn :noh<CR>
+  nnoremap <leader>ev :vsp $MYVIMRC<CR>
+  nnoremap <leader>sv :source $MYVIMRC<CR>
+  nnoremap <leader>s :update<CR>
+  nnoremap <leader><leader> :find 
+"====================NERDTree=============="
+  nnoremap <leader>d :NERDTree<CR>
+"    let g:NERDTreeDirArrowExpandable="+"
+"    let g:NERDTreeDirArrowCollapsible="~"
+"====================Powerline============="
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+"===============Miscellanious=============="
+  map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
+  " Always show statusline
+  set laststatus=2
+  " set termguicolors
+  " Turn off background bleeding when jumping to top/bottom
+  " if &term =~ '256color'
+  "  set t_ut=
+  " endif
+  set matchpairs+=<:>
