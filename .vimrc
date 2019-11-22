@@ -11,9 +11,6 @@
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-    Plugin 'Valloric/YouCompleteMe'
-
-    Plugin 'Yggdroot/indentLine'
     
 
     " All of your Plugins must be added before the following line
@@ -96,12 +93,16 @@
   nnoremap <leader>sv :source $MYVIMRC<CR>
   nnoremap <leader>s :update<CR>
   nnoremap <leader><leader> :find 
+  nnoremap <leader>bd :bd<CR>
 "====================NERDTree=============="
   nnoremap <leader>d :NERDTree<CR>
 "    let g:NERDTreeDirArrowExpandable="+"
 "    let g:NERDTreeDirArrowCollapsible="~"
 "====================Powerline============="
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+"==============Code Completion============="
+  set complete=.,b,u,]
+  set completeopt=menu,preview
 "===============Miscellanious=============="
   map <F4> :execute "vimgrep /" . expand("<cword>") . "/gj **" <Bar> cw <CR>
   " Always show statusline
