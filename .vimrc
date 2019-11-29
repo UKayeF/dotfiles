@@ -32,7 +32,7 @@
     execute pathogen#infect()
 "============Swap File Directory==========="
   set dir=$HOME/.vim/tmp/swap
-  if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
+  if !isdirectory(&dir) | call mkdir(&dir, 'p', 0777) | endif
 "================File Search==============="
   set path+=**
 "================Spaces and Tabs==========="
