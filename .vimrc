@@ -4,17 +4,17 @@
 
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+"    call vundle#begin()
     " alternatively, pass a path where Vundle should install plugins
     "call vundle#begin('~/some/path/here')
 
     " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
+"    Plugin 'VundleVim/Vundle.vim'
 
     
 
     " All of your Plugins must be added before the following line
-    call vundle#end()            " required
+"    call vundle#end()            " required
     filetype plugin indent on    " required
     " To ignore plugin indent changes, instead use:
     "filetype plugin on
@@ -32,7 +32,7 @@
     execute pathogen#infect()
 "============Swap File Directory==========="
   set dir=$HOME/.vim/tmp/swap
-  if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
+  if !isdirectory(&dir) | call mkdir(&dir, 'p', 0777) | endif
 "================File Search==============="
   set path+=**
   set wildignore+=**/node_modules/**
@@ -109,7 +109,7 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
   set laststatus=2
   " set termguicolors
   " Turn off background bleeding when jumping to top/bottom
-  " if &term =~ '256color'
-  "  set t_ut=
-  " endif
+   if &term =~ '256color'
+    set t_ut=
+   endif
   set matchpairs+=<:>
