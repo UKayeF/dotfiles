@@ -35,6 +35,9 @@
   if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 "================File Search==============="
   set path+=**
+  set wildignore+=**/node_modules/**
+  set wildignore+=**/downloads/**
+  set wildignore+=**/wp-content/uploads/**
 "================Spaces and Tabs==========="
   set tabstop=2
   set softtabstop=2
@@ -84,16 +87,13 @@
   let g:syntastic_java_checker = ['javac']
 "==============Leader Shortcuts============="
   let mapleader=" "
-  inoremap jk <esc>
-  nnoremap <leader>vv :vsp<CR>
-  nnoremap <leader>hh :sp<CR>
-  nnoremap <leader>cc :close<CR>
   nnoremap <leader>nn :noh<CR>
   nnoremap <leader>ev :vsp $MYVIMRC<CR>
   nnoremap <leader>sv :source $MYVIMRC<CR>
   nnoremap <leader>s :update<CR>
   nnoremap <leader><leader> :find 
   nnoremap <leader>bd :bd<CR>
+  nnoremap <leader>ff zf%
 "====================NERDTree=============="
   nnoremap <leader>d :NERDTree<CR>
 "    let g:NERDTreeDirArrowExpandable="+"
