@@ -15,6 +15,8 @@
     Plugin 'yuezk/vim-js'
     Plugin 'maxmellon/vim-jsx-pretty'
     Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'drewtempelmeyer/palenight.vim'
+    Plugin 'flazz/vim-colorschemes'
 
     
 
@@ -57,7 +59,7 @@
 "  set smartindent
 "==================   Theme    ============"
   set t_Co=256
-  colorscheme gruvbox
+  colorscheme OceanicNext
   set background=dark
   syntax on
 "==================UI Config==============="
