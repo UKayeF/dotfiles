@@ -9,6 +9,7 @@
     "call vundle#begin('~/some/path/here')
 
     " let Vundle manage Vundle, required
+    " :PluginInstall
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'othree/yajs.vim'
     Plugin 'yuezk/vim-js'
@@ -31,10 +32,10 @@
     "
     " see :h vundle for more details or wiki for FAQ
 
-    let g:ycm_global_ycm_extra_conf = '/home/samer/.vim/YCM/ycm_extra_conf.py'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter'
     let g:airline_powerline_fonts = 1
+    let g:airline_theme = 'base16color'
 "====================Pathogen=============="
     execute pathogen#infect()
 "============Swap File Directory==========="
