@@ -59,7 +59,7 @@
 "  set smartindent
 "==================   Theme    ============"
   set t_Co=256
-  colorscheme OceanicNext
+  colorscheme molokai
   set background=dark
   syntax on
 "==================UI Config==============="
