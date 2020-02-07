@@ -17,6 +17,7 @@
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'drewtempelmeyer/palenight.vim'
     Plugin 'flazz/vim-colorschemes'
+    Plugin 'leafgarland/typescript-vim'
 
     
 
@@ -37,12 +38,18 @@
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'jsformatter'
     let g:airline_powerline_fonts = 1
-    let g:airline_theme = 'base16color'
+"    let g:airline_theme = 'base16color'
+    let g:airline_theme = 'base16_snazzy'
 "====================Pathogen=============="
     execute pathogen#infect()
 "============Swap File Directory==========="
   set dir=$HOME/.vim/tmp/swap
   if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
+"===============Block Cursor==============="
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
 "================File Search==============="
   set path+=**
   set wildignore+=**/node_modules/**
