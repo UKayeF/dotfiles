@@ -49,6 +49,8 @@ set matchpairs+=<:>
     let g:airline_theme = 'base16_snazzy'
 "====================Pathogen=============="
     execute pathogen#infect()
+    map <F12> :!curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim<CR>
 "============Swap File Directory==========="
   set dir=$HOME/.vim/tmp/swap
   if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
