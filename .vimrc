@@ -1,6 +1,21 @@
+set matchpairs+=<:>
 "===================Vundle================"
     set nocompatible              " be iMproved, required
     filetype off                  " required
+
+    call plug#begin()
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+      Plug 'VundleVim/Vundle.vim'
+      Plug 'othree/yajs.vim'
+      Plug 'yuezk/vim-js'
+      Plug 'maxmellon/vim-jsx-pretty'
+      Plug 'vim-airline/vim-airline-themes'
+      Plug 'drewtempelmeyer/palenight.vim'
+      Plug 'flazz/vim-colorschemes'
+      Plug 'leafgarland/typescript-vim'
+      Plug 'preservim/nerdtree'
+    call plug#end()
 
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,14 +25,6 @@
 
     " let Vundle manage Vundle, required
     " :PluginInstall
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'othree/yajs.vim'
-    Plugin 'yuezk/vim-js'
-    Plugin 'maxmellon/vim-jsx-pretty'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'drewtempelmeyer/palenight.vim'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'leafgarland/typescript-vim'
 
     
 
@@ -109,10 +116,11 @@ let &t_te.="\e[0 q"
   nnoremap <leader>sv :source $MYVIMRC<CR>
   nnoremap <leader>s :update<CR>
   nnoremap <leader><leader> :find 
-  nnoremap <leader>bd :bd<CR>
+  nnoremap <leader>bd :bd!<CR>
   nnoremap <leader>ff zf%
 "====================NERDTree=============="
   nnoremap <leader>d :NERDTree<CR>
+  nnoremap <leader>ag :Ag<CR>
 "    let g:NERDTreeDirArrowExpandable="+"
 "    let g:NERDTreeDirArrowCollapsible="~"
 "====================Powerline============="
