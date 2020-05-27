@@ -6,6 +6,9 @@ set matchpairs+=<:>
     call plug#begin()
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
+      Plug 'sheerun/vim-polyglot'
+      Plug 'dense-analysis/ale'
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
       Plug 'VundleVim/Vundle.vim'
       Plug 'othree/yajs.vim'
       Plug 'yuezk/vim-js'
@@ -15,6 +18,7 @@ set matchpairs+=<:>
       Plug 'flazz/vim-colorschemes'
       Plug 'leafgarland/typescript-vim'
       Plug 'preservim/nerdtree'
+      Plug 'vim-airline/vim-airline'
     call plug#end()
 
     " set the runtime path to include Vundle and initialize
@@ -49,8 +53,6 @@ set matchpairs+=<:>
     let g:airline_theme = 'base16_snazzy'
 "====================Pathogen=============="
     execute pathogen#infect()
-    map <F12> :!curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim<CR>
 "============Swap File Directory==========="
   set dir=$HOME/.vim/tmp/swap
   if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
@@ -119,12 +121,20 @@ let &t_te.="\e[0 q"
   nnoremap <leader>s :update<CR>
   nnoremap <leader><leader> :find 
   nnoremap <leader>bd :bd!<CR>
-  nnoremap <leader>ff zf%
+  nnoremap <leader>fp zf}
+  nnoremap <leader>fe $zf%
+  nnoremap <leader>fb ($zf%
+  nnoremap <leader>un :set ff=unix<CR> 
+  nnoremap <leader>win :%s/^M//g<CR>
 "====================NERDTree=============="
   nnoremap <leader>d :NERDTree<CR>
   nnoremap <leader>ag :Ag<CR>
+  nnoremap <leader>ff :Files<CR>
 "    let g:NERDTreeDirArrowExpandable="+"
 "    let g:NERDTreeDirArrowCollapsible="~"
+"====================ESLint================"
+  nmap <silent> [c <Plug>(ale_previous_wrap)
+  nmap <silent> ]c <Plug>(ale_next_wrap)
 "====================Powerline============="
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 "==============Code Completion============="
@@ -140,3 +150,6 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
   "  set t_ut=
   " endif
   set matchpairs+=<:>
+  "============== Vim folds =============="
+  au BufWinLeave * mkview
+  au BufWinEnter * silent loadview
